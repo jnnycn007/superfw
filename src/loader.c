@@ -360,6 +360,7 @@ unsigned load_gba_rom(
   // Set the ROM into read only mode, disable SD card reader as well. Maps SRAM bank 0.
   set_supercard_mode(MAPPED_SDRAM, false, false);
 
+  REG_WAITCNT = 0x4000;
   launch_reset(boot_bios_splash, use_fastew);
 
   return 0;
@@ -509,6 +510,7 @@ unsigned launch_gba_nor(
   // Set the ROM into read only mode, disable SD card reader as well.
   set_supercard_mode(MAPPED_FIRMWARE, false, false);
 
+  REG_WAITCNT = 0x4000;
   launch_reset(boot_bios_splash, use_fastew);
 
   return 0;
